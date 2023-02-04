@@ -13,6 +13,10 @@ public class KamikazeAI : MonoBehaviour
     public float speedLimit;
     public float rotDif;
 
+    public bool aggroed;
+    public float innerAggroDist;
+    public float outerAggroDist;
+
     public float rotationStrength;
     public float maxAngleForBoost;
 
@@ -26,7 +30,17 @@ public class KamikazeAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        float dist = Vector3.Distance(target.transform.position, transform.position);
+        if(!aggroed && dist < innerAggroDist)
+        {
+            aggroed = true;
+        }
+
+        if (aggroed && dist > outerAggroDist)
+        {
+            aggroed = false;
+        }
+        if (target != null && aggroed)
         {
             Vector3 targ = target.position; //+ (new Vector3(target.gameObject.GetComponent<Rigidbody2D>().velocity.x, target.gameObject.GetComponent<Rigidbody2D>().velocity.y, 0) * leadMultiplier);
             targ.z = 0f;

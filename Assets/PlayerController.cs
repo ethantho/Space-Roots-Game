@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     public Bullet bulletPrefab;
+    public Booster rightBoost;
+    public Booster leftBoost;
+    public Booster backBoost;
+    public SpriteRenderer Exhaust;
     public float rotationSpeed = 100f;
     public float speed = 20;
     public float speedLimit = 1;
@@ -74,7 +78,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
+            Exhaust.enabled = true;
 
+        }
+        else
+        {
+            Exhaust.enabled = false;
         }
 
         
@@ -97,6 +106,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Double Tapped U");
                 rb.AddForce(transform.up * speed * burstMultiplier);
+                backBoost.Boost();
             }
             else
             {
@@ -113,6 +123,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Double Tapped L");
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
+                rightBoost.Boost();
             }
             else
             {
@@ -130,6 +141,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Double Tapped R");
                 rb.AddForce(transform.right * speed * burstMultiplier);
+                leftBoost.Boost();
             }
             else
             {

@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped L");
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
                 rightBoost.Boost();
+                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -150,6 +151,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped R");
                 rb.AddForce(transform.right * speed * burstMultiplier);
                 leftBoost.Boost();
+                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -195,6 +197,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             RCount = 0;
+        }
+    }
+
+    void takeDamage()
+    {
+        Debug.Log("Took damage");
+        FuelBar.depleteFuel(50f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            takeDamage();
         }
     }
 }

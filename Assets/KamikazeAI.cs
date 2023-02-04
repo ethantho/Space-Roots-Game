@@ -11,7 +11,8 @@ public class KamikazeAI : MonoBehaviour
     public float speedLimit;
     public float rotDif;
 
-    float rotationStrength = 0.5f;
+    public float rotationStrength;
+    public float maxAngleForBoost;
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +31,18 @@ public class KamikazeAI : MonoBehaviour
             targ.x = targ.x - objectPos.x;
             targ.y = targ.y - objectPos.y;
 
-            Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
+            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg - 90;
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
             float str = Mathf.Min(rotationStrength * Time.deltaTime, 1);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
 
-            float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg - 90;
-            rotDif = Mathf.Abs(transform.rotation.z - angle);
+
+            rotDif = Quaternion.Angle(transform.rotation, targetRotation);
             //transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime / scalingFactor);
 
-            if(rotDif < 45)
+            if(Mathf.Abs(rotDif) < maxAngleForBoost)
                 rb.AddForce(transform.up * speed);
 
             if (rb.velocity.magnitude > speedLimit)

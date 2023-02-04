@@ -32976,12 +32976,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 206357800}
-  leadMultiplier: 0.25
-  speed: 6.38
-  speedLimit: 30.41
+  leadMultiplier: 0.28
+  speed: 10
+  speedLimit: 20
   rotDif: 0
-  rotationStrength: 7.67
-  maxAngleForBoost: 9.64
 --- !u!50 &1757512694
 Rigidbody2D:
   serializedVersion: 4
@@ -32995,8 +32993,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.76
-  m_AngularDrag: 0
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -33122,14 +33120,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
-      propertyPath: speedLimit
-      value: 30.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
-      propertyPath: burstMultiplier
-      value: 400
-      objectReference: {fileID: 0}
     - target: {fileID: 8516141179284800274, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: m_RootOrder
       value: 2

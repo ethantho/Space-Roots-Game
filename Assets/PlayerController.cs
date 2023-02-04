@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float burstMultiplier;
 
 
-    float doubleTapThreshold = 0.3f;
+    float doubleTapThreshold = 0.2f;
     int LCount;
     float LCool;
     int RCount;

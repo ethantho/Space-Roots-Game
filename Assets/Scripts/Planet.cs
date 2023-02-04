@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool planted = false;
 
-    // Update is called once per frame
-    void Update()
+
+    public void Plant()
     {
-        
+        if (!planted)
+        {
+            planted = true;
+        }
     }
 }

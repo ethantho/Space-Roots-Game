@@ -43,4 +43,9 @@ public class PlayerLine : MonoBehaviour
             timer = float.PositiveInfinity;
         }
     }
+
+    public void BreakLine()
+    {
+        //line.
+    }
 }

@@ -5,28 +5,71 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
+    public Bullet bulletPrefab;
     public float rotationSpeed = 100f;
     public float speed = 20;
     public float speedLimit = 1;
     public float burstMultiplier;
 
 
-    float doubleTapThreshold = 0.4f;
-    int LCount = 0;
-    float LCool = 0.4f;
-    int RCount = 0;
-    float RCool = 0.4f;
-    int UCount = 0;
-    float UCool = 0.4f;
+    float doubleTapThreshold = 0.3f;
+    int LCount;
+    float LCool;
+    int RCount;
+    float RCool;
+    int UCount;
+    float UCool;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        LCount = 0;
+        LCool = doubleTapThreshold;
+        RCount = 0;
+        RCool = doubleTapThreshold;
+        UCount = 0;
+        UCool = doubleTapThreshold;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        doBasicMovement();
+
+
+        doBurstMovement();
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.creator = gameObject;
+            bullet.rigidbody.velocity = rb.velocity;
+            bullet.Project(transform.up * 5);
+            
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        doRotation();
+    }
+
+    void doRotation()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
+        }
+    }
+    void doBasicMovement()
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -34,6 +77,20 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.drag = 0.75f;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
+    }
+
+    void doBurstMovement()
+    {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (UCool > 0 && UCount == 1/*Number of Taps you want Minus One*/)
@@ -48,10 +105,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
-        }
+
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -67,10 +121,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
-        }
+
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -93,14 +144,6 @@ public class PlayerController : MonoBehaviour
             float multiplier = speedLimit / rb.velocity.magnitude;
             rb.velocity = rb.velocity * multiplier;
         }
-        //if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
-        //}
-
-
-
-
 
         if (UCool > 0)
         {
@@ -112,7 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             UCount = 0;
         }
-        if (LCool > 0) 
+        if (LCool > 0)
         {
 
             LCool -= 1 * Time.deltaTime;
@@ -133,6 +176,5 @@ public class PlayerController : MonoBehaviour
         {
             RCount = 0;
         }
-
     }
 }

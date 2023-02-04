@@ -22,7 +22,7 @@ public class CreateTests : MonoBehaviour
     {
         newEnd = Instantiate(end, new Vector3 (20, 0, 0), transform.rotation);
         newLine = Instantiate(line);
-        newLine.GetComponent<Vine>().start = anchor;
-        newLine.GetComponent<Vine>().end = newEnd;
+        newLine.GetComponent<RootMove>().start = anchor;
+        newLine.GetComponent<RootMove>().end = newEnd;
     }
 }

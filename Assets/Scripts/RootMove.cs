@@ -5,20 +5,18 @@ using UnityEngine;
 public class RootMove : MonoBehaviour
 {
     public LineRenderer line;
-    public Vector3 start;
-    public Vector3 end;
+    public GameObject start;
+    public GameObject end;
 
     // Start is called before the first frame update
     void Start()
     {
-        start = GameObject.Find("Start").transform.position;
-        end = Input.mousePosition;
-        line.SetPosition(0, start);
-        line.SetPosition(1, end);
+        line.SetPosition(0, start.transform.position);
+        line.SetPosition(1, end.transform.position);
     }
+
     void Update()
     {
-        end = GameObject.Find("End").transform.position;
-        line.SetPosition(1, end);
+        line.SetPosition(1, end.transform.position);
     }
 }

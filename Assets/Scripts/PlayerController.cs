@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,10 +42,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        doBasicMovement();
+        if (FuelBar.getFuel() > 0)
+        {
+            doBasicMovement();
 
 
-        doBurstMovement();
+            doBurstMovement();
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
             bullet.creator = gameObject;
             bullet.rigidbody.velocity = rb.velocity;
             bullet.Project(transform.up * 5);
-            
+
         }
     }
 
@@ -63,14 +68,17 @@ public class PlayerController : MonoBehaviour
 
     void doRotation()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (FuelBar.getFuel() > 0)
         {
-            transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
+            }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
+            }
         }
     }
     void doBasicMovement()
@@ -78,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
+            FuelBar.depleteFuel(0.01f);
             Exhaust.enabled = true;
 
         }
@@ -86,11 +95,11 @@ public class PlayerController : MonoBehaviour
             Exhaust.enabled = false;
         }
 
-        
+
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            rb.drag = 0.75f;
+            rb.drag = 2f;
         }
         else
         {
@@ -107,6 +116,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped U");
                 rb.AddForce(transform.up * speed * burstMultiplier);
                 backBoost.Boost();
+                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -124,6 +134,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped L");
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
                 rightBoost.Boost();
+                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -142,6 +153,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped R");
                 rb.AddForce(transform.right * speed * burstMultiplier);
                 leftBoost.Boost();
+                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -187,6 +199,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             RCount = 0;
+        }
+    }
+
+    void takeDamage()
+    {
+        Debug.Log("Took damage");
+        FuelBar.depleteFuel(50f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            takeDamage();
         }
     }
 }

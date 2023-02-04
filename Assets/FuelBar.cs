@@ -38,7 +38,7 @@ public class FuelBar : MonoBehaviour
 		
 		width *= fuel/100.0f;
 		rectTransform.sizeDelta = new Vector2(width, height);
-		planetsRemainingTxt.text = "PLANETS REMAINING: " + planetsRemaining;
+		//planetsRemainingTxt.text = "PLANETS REMAINING: " + planetsRemaining;
 		if(fuel > 100.0f)
 		{
 			fuel = 100.0f;

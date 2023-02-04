@@ -9,6 +9,9 @@ public class KamikazeAI : MonoBehaviour
     public float leadMultiplier;
     public float speed;
     public float speedLimit;
+    public float rotDif;
+
+    float rotationStrength = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +24,24 @@ public class KamikazeAI : MonoBehaviour
     {
         if (target != null)
         {
-            Vector3 targ = target.position + (new Vector3(target.gameObject.GetComponent<Rigidbody2D>().velocity.x, target.gameObject.GetComponent<Rigidbody2D>().velocity.y, 0) * leadMultiplier);
+            Vector3 targ = target.position; //+ (new Vector3(target.gameObject.GetComponent<Rigidbody2D>().velocity.x, target.gameObject.GetComponent<Rigidbody2D>().velocity.y, 0) * leadMultiplier);
             targ.z = 0f;
             Vector3 objectPos = transform.position;
             targ.x = targ.x - objectPos.x;
             targ.y = targ.y - objectPos.y;
 
+            Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
+            float str = Mathf.Min(rotationStrength * Time.deltaTime, 1);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+
             float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg - 90;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            rotDif = Mathf.Abs(transform.rotation.z - angle);
+            //transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime / scalingFactor);
 
-
-            rb.AddForce(transform.up * speed);
+            if(rotDif < 45)
+                rb.AddForce(transform.up * speed);
 
             if (rb.velocity.magnitude > speedLimit)
             {

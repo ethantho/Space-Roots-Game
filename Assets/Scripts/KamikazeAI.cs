@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CircleCollider2D))]
 public class KamikazeAI : MonoBehaviour
 {
     Rigidbody2D rb;
-    CircleCollider2D col;
     public Transform target;
     public float leadMultiplier;
     public float speed;
@@ -20,7 +18,6 @@ public class KamikazeAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -54,10 +51,5 @@ public class KamikazeAI : MonoBehaviour
                 rb.velocity = rb.velocity * multiplier;
             }
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
     }
 }

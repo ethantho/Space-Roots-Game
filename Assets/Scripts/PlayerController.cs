@@ -40,13 +40,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(FuelBar.getFuel() > 0)
-		{
-			doBasicMovement();
+        doBasicMovement();
 
 
-			doBurstMovement();
-		}
+        doBurstMovement();
 
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -66,25 +63,21 @@ public class PlayerController : MonoBehaviour
 
     void doRotation()
     {
-		if(FuelBar.getFuel() > 0)
-		{
-			if (Input.GetKey(KeyCode.LeftArrow))
-			{
-				transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
-			}
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
+        }
 
-			if (Input.GetKey(KeyCode.RightArrow))
-			{
-				transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
-			}
-		}
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(new Vector3(0, 0, 1), -rotationSpeed * Time.deltaTime);
+        }
     }
     void doBasicMovement()
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
-			FuelBar.depleteFuel(0.01f);
             Exhaust.enabled = true;
 
         }
@@ -114,7 +107,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped U");
                 rb.AddForce(transform.up * speed * burstMultiplier);
                 backBoost.Boost();
-				FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -132,7 +124,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped L");
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
                 rightBoost.Boost();
-                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -151,7 +142,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped R");
                 rb.AddForce(transform.right * speed * burstMultiplier);
                 leftBoost.Boost();
-                FuelBar.depleteFuel(5f);
             }
             else
             {
@@ -197,20 +187,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             RCount = 0;
-        }
-    }
-
-    void takeDamage()
-    {
-        Debug.Log("Took damage");
-        FuelBar.depleteFuel(50f);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            takeDamage();
         }
     }
 }

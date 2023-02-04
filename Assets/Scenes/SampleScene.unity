@@ -32977,9 +32977,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 206357800}
   leadMultiplier: 0.28
-  speed: 10
-  speedLimit: 20
+  speed: 13.28
+  speedLimit: 25.41
   rotDif: 0
+  rotationStrength: 2.5
+  maxAngleForBoost: 15.49
 --- !u!50 &1757512694
 Rigidbody2D:
   serializedVersion: 4

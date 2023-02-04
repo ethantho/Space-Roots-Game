@@ -39,18 +39,19 @@ public class WorldGeneration : MonoBehaviour
 
     void SpawnPlanets()
     {
-        for (int i = 0; i < planets; i++)
+        int planetCount = 0;
+        while (planetCount < planets)
         {
-            float enemyRadius = 200;
+            float enemyRadius = 10;
             float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
             float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
             Vector2 spawnPoint = new Vector2(x, y);
             Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
             int count = 0;
-            while (CollisionWithEnemy == false)
+            if (CollisionWithEnemy == false)
             {
                 GameObject temp = Instantiate(planetPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                float size = Random.Range(0.5f, 5f);
+                float size = Random.Range(1f, 5f);
                 //size = 1f;
                 temp.GetComponent<Rigidbody2D>().mass = 10 * size;
                 temp.transform.localScale = new Vector3(size, size, 0);
@@ -58,6 +59,7 @@ public class WorldGeneration : MonoBehaviour
                 y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
                 spawnPoint = new Vector2(x, y);
                 count++;
+                planetCount++;
                 if (count > 10)
                 {
                     Destroy(temp);
@@ -84,7 +86,7 @@ public class WorldGeneration : MonoBehaviour
                 for (int a = 0; a < asteroidsToSpawn; a++)
                 {
                     Vector2 asteroidSpawnPoint = spawnPoint + new Vector2(Random.Range(0f, 15f), Random.Range(0f, 15f));
-                    Collider2D CollisionWithAsteroid = Physics2D.OverlapCircle(spawnPoint, 10, LayerMask.GetMask("Objects"));
+                    Collider2D CollisionWithAsteroid = Physics2D.OverlapCircle(spawnPoint, 2, LayerMask.GetMask("Objects"));
                     if (CollisionWithAsteroid == false)
                     {
                         GameObject temp = Instantiate(asteroidPrefab, new Vector3(asteroidSpawnPoint.x, asteroidSpawnPoint.y, 0), Quaternion.identity);

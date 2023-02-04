@@ -17,6 +17,7 @@ public class RootMove : MonoBehaviour
 
     void Update()
     {
+        line.SetPosition(0, start.transform.position);
         line.SetPosition(1, end.transform.position);
     }
 }

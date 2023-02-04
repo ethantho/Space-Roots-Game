@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootMove : MonoBehaviour
+public class Vine : MonoBehaviour
 {
     public LineRenderer line;
     public Vector3 start;

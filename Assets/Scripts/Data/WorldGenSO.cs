@@ -9,5 +9,5 @@ public class WorldGenSO : ScriptableObject
     public Sprite bg;
         
     [SerializeField]
-    public int planets = 9;
+    public int planets = 20;
 }

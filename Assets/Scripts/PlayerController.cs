@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
-            FuelBar.depleteFuel(0.01f);
+            FuelBar.depleteFuel(0.001f);
             Exhaust.enabled = true;
 
         }
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped U");
                 rb.AddForce(transform.up * speed * burstMultiplier);
                 backBoost.Boost();
-                FuelBar.depleteFuel(5f);
+                FuelBar.depleteFuel(3f);
             }
             else
             {
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped L");
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
                 rightBoost.Boost();
-                FuelBar.depleteFuel(5f);
+                FuelBar.depleteFuel(3f);
             }
             else
             {
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Double Tapped R");
                 rb.AddForce(transform.right * speed * burstMultiplier);
                 leftBoost.Boost();
-                FuelBar.depleteFuel(5f);
+                FuelBar.depleteFuel(3f);
             }
             else
             {
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
     void takeDamage()
     {
         Debug.Log("Took damage");
-        FuelBar.depleteFuel(50f);
+        FuelBar.depleteFuel(20f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

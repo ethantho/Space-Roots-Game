@@ -37,6 +37,15 @@ public class KamikazeAI : MonoBehaviour
         {
             aggroed = false;
         }
+
+        if (!aggroed)
+        {
+            rb.drag = 2f;
+        }
+        else
+        {
+            rb.drag = 0f;
+        }
         if (target != null && aggroed)
         {
             Vector3 targ = target.position; //+ (new Vector3(target.gameObject.GetComponent<Rigidbody2D>().velocity.x, target.gameObject.GetComponent<Rigidbody2D>().velocity.y, 0) * leadMultiplier);
@@ -65,5 +74,10 @@ public class KamikazeAI : MonoBehaviour
                 rb.velocity = rb.velocity * multiplier;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 }

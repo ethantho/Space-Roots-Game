@@ -6,6 +6,7 @@ public class KamikazeAI : MonoBehaviour
 {
     Rigidbody2D rb;
     public Transform target;
+    [SerializeField] ScoreBoard sb;
     public float leadMultiplier;
     public float speed;
     public float speedLimit;
@@ -22,6 +23,7 @@ public class KamikazeAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sb = (ScoreBoard)FindObjectOfType(typeof(ScoreBoard));
     }
 
     // Update is called once per frame
@@ -36,6 +38,8 @@ public class KamikazeAI : MonoBehaviour
         if (aggroed && dist > outerAggroDist)
         {
             aggroed = false;
+            sb.drumset.mute = true;
+
         }
 
         if (!aggroed)
@@ -45,6 +49,7 @@ public class KamikazeAI : MonoBehaviour
         else
         {
             rb.drag = 0f;
+            sb.drumset.mute = false;
         }
         if (target != null && aggroed)
         {

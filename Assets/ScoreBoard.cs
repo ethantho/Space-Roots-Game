@@ -14,7 +14,7 @@ public class ScoreBoard : MonoBehaviour
     [SerializeField] AudioSource ePianoVibraphone;
     [SerializeField] AudioSource congasShaker;
     [SerializeField] AudioSource bass;
-    [SerializeField] AudioSource drumset;
+    public AudioSource drumset;
 
 
     // Start is called before the first frame update
@@ -80,6 +80,7 @@ public class ScoreBoard : MonoBehaviour
         wg.SpawnEnemies((float)planetsClaimed / totalPlanets / 2);
 
     }
+
 
 
 }

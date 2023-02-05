@@ -20,7 +20,9 @@ public class Planet : MonoBehaviour
         {
             planted = true;
             anim.SetBool("plantedAnim", true);
-            sb.Score();
+
+            if(gameObject.tag != "Home")
+                sb.Score();
         }
         Debug.Log("Planted!");
     }

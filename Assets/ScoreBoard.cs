@@ -9,11 +9,30 @@ public class ScoreBoard : MonoBehaviour
     public Timer t;
     [SerializeField] WorldGeneration wg;
 
+    [SerializeField] AudioSource synths;
+    [SerializeField] AudioSource flute;
+    [SerializeField] AudioSource ePianoVibraphone;
+    [SerializeField] AudioSource congasShaker;
+    [SerializeField] AudioSource bass;
+    [SerializeField] AudioSource drumset;
+
 
     // Start is called before the first frame update
     void Start()
     {
         planetsClaimed = 0;
+        synths.Play();
+        flute.Play();
+        ePianoVibraphone.Play();
+        congasShaker.Play();
+        bass.Play();
+        drumset.Play();
+
+        flute.mute = true;
+        ePianoVibraphone.mute = true;
+        congasShaker.mute = true;
+        bass.mute = true;
+        drumset.mute = true;
     }
 
     // Update is called once per frame
@@ -23,6 +42,30 @@ public class ScoreBoard : MonoBehaviour
         {
             Win();
         }
+
+        if(planetsClaimed >= 1)
+        {
+            flute.mute = false;
+        }
+
+        if ((float) planetsClaimed / totalPlanets >= 0.25)
+        {
+            ePianoVibraphone.mute = false;
+        }
+
+        if ((float)planetsClaimed / totalPlanets >= 0.5)
+        {
+            bass.mute = false;
+        }
+
+        if ((float)planetsClaimed / totalPlanets >= 0.75)
+        {
+            congasShaker.mute = false;
+        }
+
+
+
+
     }
 
     void Win()
@@ -34,7 +77,7 @@ public class ScoreBoard : MonoBehaviour
     public void Score()
     {
         planetsClaimed++;
-        wg.SpawnEnemies((float)planetsClaimed / totalPlanets);
+        wg.SpawnEnemies((float)planetsClaimed / totalPlanets / 2);
 
     }
 

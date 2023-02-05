@@ -6,6 +6,7 @@ public class Planet : MonoBehaviour
 {
     private bool planted = false;
     private Animator anim;
+    public ScoreBoard sb;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class Planet : MonoBehaviour
         {
             planted = true;
             anim.SetBool("plantedAnim", true);
+            sb.Score();
         }
         Debug.Log("Planted!");
     }

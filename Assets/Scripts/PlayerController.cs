@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
-            FuelBar.depleteFuel(0.001f);
+            FuelBar.depleteFuel(0.01f);
             Exhaust.enabled = true;
 
         }

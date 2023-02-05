@@ -84,7 +84,11 @@ public class KamikazeAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag != "Enemy")
+        {
             Destroy(gameObject);
+            sb.drumset.mute = true;
+        }
+           
 
     }
 }

@@ -267,6 +267,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Took damage");
         FuelBar.depleteFuel(20f);
         pl.BreakLine();
+        pl.plantSound.Stop();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

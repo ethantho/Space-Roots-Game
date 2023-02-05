@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FuelBar : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class FuelBar : MonoBehaviour
 	public static int planetsRemaining = 9;
 	public RectTransform rectTransform;
 	public TextMeshProUGUI planetsRemainingTxt;
+
+	float deathTimer = 3f;
 	public static float getFuel()
 	{
 		return fuel;
@@ -47,6 +50,14 @@ public class FuelBar : MonoBehaviour
 		if(fuel < 0.0f)
 		{
 			fuel = 0.0f;
+
+			deathTimer -= Time.deltaTime;
+
+		}
+
+		if(deathTimer <= 0f)
+        {
+			SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
 		}
     }
 }

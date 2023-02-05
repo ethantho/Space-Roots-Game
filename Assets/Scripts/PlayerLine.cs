@@ -6,7 +6,7 @@ public class PlayerLine : MonoBehaviour
 {
     public RootMove line;
     public GameObject rangeIndicator;
-    [SerializeField] AudioSource plantSound;
+    public AudioSource plantSound;
     float timer;
     public float range = 10;
     public float timeToPlant = 1;

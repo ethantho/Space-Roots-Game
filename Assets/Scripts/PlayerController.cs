@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] TextMeshProUGUI distanceWarning;
+    [SerializeField] AudioSource boostSound;
+    [SerializeField] AudioSource forwardSound;
     public Bullet bulletPrefab;
     public Booster rightBoost;
     public Booster leftBoost;
@@ -46,6 +48,8 @@ public class PlayerController : MonoBehaviour
         UCool = doubleTapThreshold;
         DCount = 0;
         DCool = doubleTapThreshold;
+
+        forwardSound.mute = true;
     }
 
     // Update is called once per frame
@@ -111,11 +115,13 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * speed);
             FuelBar.depleteFuel(0.01f);
             Exhaust.enabled = true;
+            forwardSound.mute = false;
 
         }
         else
         {
             Exhaust.enabled = false;
+            forwardSound.mute = true;
         }
 
 
@@ -140,6 +146,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(transform.up * speed * burstMultiplier);
                 backBoost.Boost();
                 FuelBar.depleteFuel(3f);
+                boostSound.Play();
             }
             else
             {
@@ -156,6 +163,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(transform.up * speed * burstMultiplier * -1);
                 frontBoost.Boost();
                 FuelBar.depleteFuel(3f);
+                boostSound.Play();
             }
             else
             {
@@ -174,6 +182,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(transform.right * speed * burstMultiplier * -1);
                 rightBoost.Boost();
                 FuelBar.depleteFuel(3f);
+                boostSound.Play();
             }
             else
             {
@@ -193,6 +202,7 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(transform.right * speed * burstMultiplier);
                 leftBoost.Boost();
                 FuelBar.depleteFuel(3f);
+                boostSound.Play();
             }
             else
             {

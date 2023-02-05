@@ -59,6 +59,11 @@ public class PlayerController : MonoBehaviour
             bullet.Project(transform.up * 5);
 
         }
+
+        if(this.GetComponent<PlayerLine>().line)
+        {
+            FuelBar.depleteFuel(-5f);
+        }
     }
 
     private void FixedUpdate()

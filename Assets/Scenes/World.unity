@@ -1093,6 +1093,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2441a975b49a55043adacd3af6841c2b, type: 3}
     - target: {fileID: 8516141179284800285, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516141179284800285, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -1223,9 +1227,11 @@ GameObject:
   - component: {fileID: 1590111734}
   - component: {fileID: 1590111733}
   - component: {fileID: 1590111735}
-  m_Layer: 0
+  - component: {fileID: 1590111736}
+  - component: {fileID: 1590111737}
+  m_Layer: 6
   m_Name: Home
-  m_TagString: Untagged
+  m_TagString: Home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1271,7 +1277,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 38c3b751a30abcf41ad608472f3082de, type: 3}
+  m_Sprite: {fileID: -937671471, guid: 068411bfd6b926c4c98dc229b2fe7f96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1313,6 +1319,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.125
+--- !u!114 &1590111736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590111732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a028bad0fc0b1c248b0e95f7e2ec205f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1590111737
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590111732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 693b1e3a36c4b72408409fb3cc4b2c81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1681725187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1830,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3632944203963264257, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3632944203963264257, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
@@ -1803,6 +1845,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2646491021896823985, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1957457763, guid: 092a9efea69e06c47b1edd09c751a842, type: 3}
     - target: {fileID: 2646491021896824014, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
       propertyPath: m_RootOrder
       value: 4

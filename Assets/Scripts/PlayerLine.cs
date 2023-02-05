@@ -39,7 +39,7 @@ public class PlayerLine : MonoBehaviour
 
                 //perform your action
                 //if tethered
-                if(line)
+                if(line || planet.CompareTag("Home"))
                 {
                     line.end = planet.gameObject;
                     lm.newLine(planet.gameObject, this.gameObject);

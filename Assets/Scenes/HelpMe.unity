@@ -345,6 +345,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalPlanets: 0
   planetsClaimed: 0
+  t: {fileID: 0}
+  wg: {fileID: 0}
+  synths: {fileID: 0}
+  flute: {fileID: 0}
+  ePianoVibraphone: {fileID: 0}
+  congasShaker: {fileID: 0}
+  bass: {fileID: 0}
+  drumset: {fileID: 0}
 --- !u!4 &392380611
 Transform:
   m_ObjectHideFlags: 0
@@ -812,6 +820,7 @@ MonoBehaviour:
   - {fileID: 778770497}
   enemyTarget: {fileID: 207494457}
   planets: []
+  wqp: {fileID: 0}
   sb: {fileID: 0}
 --- !u!212 &778770495
 SpriteRenderer:

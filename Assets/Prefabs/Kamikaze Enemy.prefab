@@ -105,8 +105,8 @@ MonoBehaviour:
   speedLimit: 17.13
   rotDif: 0
   aggroed: 0
-  innerAggroDist: 15
-  outerAggroDist: 30
+  innerAggroDist: 22
+  outerAggroDist: 40
   rotationStrength: 6.24
   maxAngleForBoost: 8
 --- !u!50 &7906806176086988196

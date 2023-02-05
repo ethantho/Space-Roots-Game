@@ -12,6 +12,7 @@ public class Planet : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetBool("plantedAnim", false);
+        sb = (ScoreBoard)FindObjectOfType(typeof(ScoreBoard));
     }
     public void Plant()
     {

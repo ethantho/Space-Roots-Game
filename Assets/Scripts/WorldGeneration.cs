@@ -54,8 +54,8 @@ public class WorldGeneration : MonoBehaviour
         while (planetCount < planetstoSpawn)
         {
             float enemyRadius = 50;
-            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
             Vector2 spawnPoint = new Vector2(x, y);
             Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
             int count = 0;
@@ -66,8 +66,8 @@ public class WorldGeneration : MonoBehaviour
                 //size = 1f;
                 temp.GetComponent<Rigidbody2D>().mass = 100 * size;
                 temp.transform.localScale = new Vector3(size, size, 0);
-                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
                 spawnPoint = new Vector2(x, y);
                 count++;
                 planetCount++;
@@ -86,8 +86,8 @@ public class WorldGeneration : MonoBehaviour
         for (int i = 0; i < asteroidstoSpawn; i++)
         {
             float enemyRadius = 30;
-            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
             Vector2 spawnPoint = new Vector2(x, y);
             Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
             int count = 0;
@@ -123,8 +123,8 @@ public class WorldGeneration : MonoBehaviour
         while (enemyCount < enemiestoSpawn)
         {
             float enemyRadius = 50;
-            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
             Vector2 spawnPoint = new Vector2(x, y);
             Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
             int count = 0;
@@ -136,8 +136,8 @@ public class WorldGeneration : MonoBehaviour
                 //size = 1f;
                 //temp.GetComponent<Rigidbody2D>().mass = 100 * size;
                 //temp.transform.localScale = new Vector3(size, size, 0);
-                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
                 spawnPoint = new Vector2(x, y);
                 count++;
                 enemyCount++;

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Booster rightBoost;
     public Booster leftBoost;
     public Booster backBoost;
+    public Booster frontBoost;
     public SpriteRenderer Exhaust;
     public float rotationSpeed = 100f;
     public float speed = 20;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     float RCool;
     int UCount;
     float UCool;
+    int DCount;
+    float DCool;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,8 @@ public class PlayerController : MonoBehaviour
         RCool = doubleTapThreshold;
         UCount = 0;
         UCool = doubleTapThreshold;
+        DCount = 0;
+        DCool = doubleTapThreshold;
     }
 
     // Update is called once per frame
@@ -64,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         if(this.GetComponent<PlayerLine>().line)
         {
-            FuelBar.depleteFuel(-0.01f);
+            FuelBar.depleteFuel(-0.03f);
         }
     }
 
@@ -129,6 +134,22 @@ public class PlayerController : MonoBehaviour
             {
                 UCool = doubleTapThreshold;
                 UCount += 1;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (DCool > 0 && DCount == 1/*Number of Taps you want Minus One*/)
+            {
+                Debug.Log("Double Tapped D");
+                rb.AddForce(transform.up * speed * burstMultiplier * -1);
+                frontBoost.Boost();
+                FuelBar.depleteFuel(3f);
+            }
+            else
+            {
+                DCool = doubleTapThreshold;
+                DCount += 1;
             }
         }
 

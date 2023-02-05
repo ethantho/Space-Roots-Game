@@ -6,6 +6,7 @@ public class ScoreBoard : MonoBehaviour
 {
     public int totalPlanets;
     public int planetsClaimed = 0;
+    public Timer t;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class ScoreBoard : MonoBehaviour
     void Win()
     {
         Debug.Log("Omedetou");
+        t.stop = true;
     }
 
     public void Score()

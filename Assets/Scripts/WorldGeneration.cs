@@ -5,10 +5,12 @@ using UnityEngine;
 public class WorldGeneration : MonoBehaviour
 {
     public Sprite bg;
-    public int planetstoSpawn, asteroidstoSpawn;
+    public int planetstoSpawn, asteroidstoSpawn, enemiestoSpawn;
     public SpriteRenderer sr;
-    public GameObject planetPrefab, asteroidPrefab;
+    public GameObject planetPrefab, asteroidPrefab;//, enemyPrefab;
+    public KamikazeAI enemyPrefab;
     public BoxCollider2D[] borders;
+    public GameObject enemyTarget;
 
     public GameObject[] planets;
 
@@ -32,10 +34,11 @@ public class WorldGeneration : MonoBehaviour
         borders[2].offset = new Vector2(0, height/2 - 5);
         borders[3].offset = new Vector2(0, -height/2 + 5);
 
-        
+        enemyPrefab.target = enemyTarget.transform;
 
         SpawnPlanets();
         SpawnAsteroids();
+        SpawnEnemies();
 
         planets = GameObject.FindGameObjectsWithTag("Planet");
     }
@@ -109,4 +112,37 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
+    void SpawnEnemies()
+    {
+        int enemyCount = 0;
+        while (enemyCount < enemiestoSpawn)
+        {
+            float enemyRadius = 50;
+            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
+            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
+            Vector2 spawnPoint = new Vector2(x, y);
+            Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
+            int count = 0;
+            //if (CollisionWithEnemy == false)
+            //{
+                KamikazeAI temp = Instantiate(enemyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                temp.target = enemyTarget.transform;
+                //float size = Random.Range(0.7f, 2f);
+                //size = 1f;
+                //temp.GetComponent<Rigidbody2D>().mass = 100 * size;
+                //temp.transform.localScale = new Vector3(size, size, 0);
+                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
+                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
+                spawnPoint = new Vector2(x, y);
+                count++;
+                enemyCount++;
+                if (count > 10)
+                {
+                    Destroy(temp);
+                    break;
+                }
+            //}
+
+        }
+    }
 }

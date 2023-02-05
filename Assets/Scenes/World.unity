@@ -751,17 +751,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7e8efc8ce9cf042913a7250ea500d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bg: {fileID: 21300000, guid: 107d1a413f2796c4dab96262bba4b72f, type: 3}
+  bg: {fileID: 21300000, guid: aeec07eea026e544d8250c6e692b8cb5, type: 3}
   planetstoSpawn: 6
   asteroidstoSpawn: 10
+  enemiestoSpawn: 10
   sr: {fileID: 778770495}
   planetPrefab: {fileID: 2646491021896823984, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
   asteroidPrefab: {fileID: 1164983810}
+  enemyPrefab: {fileID: 7906806176962283517, guid: 3bccc02ce0ba1724f8478e2fbb06f674, type: 3}
   borders:
   - {fileID: 778770493}
   - {fileID: 778770499}
   - {fileID: 778770498}
   - {fileID: 778770497}
+  enemyTarget: {fileID: 207494457}
   planets: []
 --- !u!212 &778770495
 SpriteRenderer:
@@ -1149,6 +1152,7 @@ MonoBehaviour:
   range: 10
   timeToPlant: 1
   lm: {fileID: 538539752}
+  rb: {fileID: 0}
 --- !u!1 &1492011597
 GameObject:
   m_ObjectHideFlags: 0

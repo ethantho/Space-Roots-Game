@@ -16,9 +16,10 @@ public class PlayerController : MonoBehaviour
     public float speed = 20;
     public float speedLimit = 1;
     public float burstMultiplier;
+    PlayerLine pl;
 
 
-    float doubleTapThreshold = 0.2f;
+    float doubleTapThreshold = 0.3f;
     int LCount;
     float LCool;
     int RCount;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        pl = GetComponent<PlayerLine>();
 
         LCount = 0;
         LCool = doubleTapThreshold;
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         if(this.GetComponent<PlayerLine>().line)
         {
-            FuelBar.depleteFuel(-5f);
+            FuelBar.depleteFuel(-0.01f);
         }
     }
 
@@ -211,6 +213,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Took damage");
         FuelBar.depleteFuel(20f);
+        pl.BreakLine();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -219,5 +222,6 @@ public class PlayerController : MonoBehaviour
         {
             takeDamage();
         }
+
     }
 }

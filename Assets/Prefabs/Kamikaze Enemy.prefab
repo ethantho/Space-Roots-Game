@@ -101,12 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   leadMultiplier: 0.11
-  speed: 12
-  speedLimit: 21.8
+  speed: 6.9
+  speedLimit: 18.93
   rotDif: 0
   aggroed: 0
-  innerAggroDist: 20
-  outerAggroDist: 40
+  innerAggroDist: 10
+  outerAggroDist: 20
   rotationStrength: 8
   maxAngleForBoost: 8
 --- !u!50 &7906806176086988196

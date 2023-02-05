@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ScoreBoard : MonoBehaviour
 {
     public int totalPlanets;
     public int planetsClaimed = 0;
     public Timer t;
-    bool winFlag;
     [SerializeField] WorldGeneration wg;
 
     [SerializeField] AudioSource synths;
@@ -35,9 +33,6 @@ public class ScoreBoard : MonoBehaviour
         congasShaker.mute = true;
         bass.mute = true;
         drumset.mute = true;
-
-
-        winFlag = false;
     }
 
     // Update is called once per frame
@@ -77,14 +72,6 @@ public class ScoreBoard : MonoBehaviour
     {
         Debug.Log("Omedetou");
         t.stop = true;
-
-        if (!winFlag)
-        {
-            SceneManager.LoadScene("WinScreen", LoadSceneMode.Additive);
-            winFlag = true;
-            Time.timeScale = 0f;
-        }
-        
     }
 
     public void Score()
@@ -93,7 +80,6 @@ public class ScoreBoard : MonoBehaviour
         wg.SpawnEnemies((float)planetsClaimed / totalPlanets / 2);
 
     }
-
 
 
 }

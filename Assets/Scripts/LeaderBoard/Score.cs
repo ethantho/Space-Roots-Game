@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class Score
 {
-    public string uname;
+    public string player;
     public float score;
 
     public Score(string name, float score)
 	{
-        this.uname = name;
+        this.player = name;
         this.score = score;
 	}
 }

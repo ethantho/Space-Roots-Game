@@ -14,7 +14,7 @@ public class ScoreUi : MonoBehaviour
 		for (int i = 0; i < scores.Length; ++i)
 		{
 			var row = Instantiate(rowui, transform).GetComponent<RowUI>();
-			row.uname.text = scores[i].uname;
+			row.player.text = scores[i].player;
 			row.score.text = scores[i].score.ToString();
 		}
 	}

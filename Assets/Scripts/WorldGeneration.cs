@@ -5,15 +5,17 @@ using UnityEngine;
 public class WorldGeneration : MonoBehaviour
 {
     public Sprite bg;
-    public int planets, asteroids;
+    public int planetstoSpawn, asteroidstoSpawn;
     public SpriteRenderer sr;
     public GameObject planetPrefab, asteroidPrefab;
     public BoxCollider2D[] borders;
 
+    public GameObject[] planets;
+
     // Start is called before the first frame update
     void Start()
     {
-        int root = (int)Mathf.Sqrt((float)planets);
+        int root = (int)Mathf.Sqrt((float)planetstoSpawn);
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = bg;
 
@@ -34,15 +36,16 @@ public class WorldGeneration : MonoBehaviour
 
         SpawnPlanets();
         SpawnAsteroids();
-        
+
+        planets = GameObject.FindGameObjectsWithTag("Planet");
     }
 
     void SpawnPlanets()
     {
         int planetCount = 0;
-        while (planetCount < planets)
+        while (planetCount < planetstoSpawn)
         {
-            float enemyRadius = 10;
+            float enemyRadius = 50;
             float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
             float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
             Vector2 spawnPoint = new Vector2(x, y);
@@ -51,9 +54,9 @@ public class WorldGeneration : MonoBehaviour
             if (CollisionWithEnemy == false)
             {
                 GameObject temp = Instantiate(planetPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                float size = Random.Range(1f, 5f);
+                float size = Random.Range(0.7f, 2f);
                 //size = 1f;
-                temp.GetComponent<Rigidbody2D>().mass = 10 * size;
+                temp.GetComponent<Rigidbody2D>().mass = 100 * size;
                 temp.transform.localScale = new Vector3(size, size, 0);
                 x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
                 y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);
@@ -66,12 +69,13 @@ public class WorldGeneration : MonoBehaviour
                     break;
                 }
             }
+            
         }
     }
 
     void SpawnAsteroids()
     {
-        for (int i = 0; i < asteroids; i++)
+        for (int i = 0; i < asteroidstoSpawn; i++)
         {
             float enemyRadius = 30;
             float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20);

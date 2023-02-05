@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Home
+  - Planet
   layers:
   - Default
   - TransparentFX

@@ -49,9 +49,10 @@ public class WorldGeneration : MonoBehaviour
         sb.totalPlanets = planets.Length;
         foreach (GameObject planet in planets)
         {
-            Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(planet.transform.position);
+            Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(planet.transform.position, planet.GetComponent<Planet>());
         }
         
+        sb.totalPlanets = planets.Length;
     }
 
     void SpawnPlanets()

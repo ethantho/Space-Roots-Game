@@ -41,12 +41,12 @@ public class Window_QuestPointer : MonoBehaviour
         }
     }
 
-    public QuestPointer CreatePointer(Vector3 targetPosition)
+    public QuestPointer CreatePointer(Vector3 targetPosition, Planet planetPointer)
     {
         GameObject pointerGameObject = Instantiate(transform.Find("pointerTemplate").gameObject);
         pointerGameObject.SetActive(true);
         pointerGameObject.transform.SetParent(transform, false);
-        QuestPointer questPointer = new QuestPointer(targetPosition, pointerGameObject, uiCamera, arrowSprite, crossSprite);
+        QuestPointer questPointer = new QuestPointer(targetPosition, pointerGameObject, uiCamera, arrowSprite, crossSprite, planetPointer);
         questPointerList.Add(questPointer);
         return questPointer;
     }
@@ -68,15 +68,17 @@ public class Window_QuestPointer : MonoBehaviour
         private Camera uiCamera;
         private RectTransform pointerRectTransform;
         private Image pointerImage;
+        private Planet planet;
         Vector2 ViewportPos;
 
-        public QuestPointer(Vector3 targetPosition, GameObject pointerGameObject, Camera uiCamera, Sprite arrowSprite, Sprite crossSprite)
+        public QuestPointer(Vector3 targetPosition, GameObject pointerGameObject, Camera uiCamera, Sprite arrowSprite, Sprite crossSprite, Planet planet)
         {
             this.targetPosition = targetPosition;
             this.pointerGameObject = pointerGameObject;
             this.uiCamera = uiCamera;
             this.arrowSprite = arrowSprite;
             this.crossSprite = crossSprite;
+            this.planet = planet;
 
             pointerRectTransform = pointerGameObject.GetComponent<RectTransform>();
             pointerImage = pointerGameObject.GetComponent<Image>();
@@ -98,6 +100,19 @@ public class Window_QuestPointer : MonoBehaviour
 
             ViewportPos = Camera.main.WorldToViewportPoint(player.transform.position);
             //pointerRectTransform.position = new Vector2(Screen.width * ViewportPos.x, Screen.height * ViewportPos.y);
+
+            if (planet.isPlanted())
+            {
+                this.pointerGameObject.GetComponent<Image>().color = Color.green;
+            }
+            if(Vector3.Distance(player.transform.position, targetPosition) > 40f)
+            {
+                this.pointerGameObject.SetActive(false);
+            }
+            else
+            {
+                this.pointerGameObject.SetActive(true);
+            }
 
             /*
             if (isOffScreen)

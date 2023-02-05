@@ -6,12 +6,17 @@ public class Planet : MonoBehaviour
 {
     private bool planted = false;
 
-
     public void Plant()
     {
         if (!planted)
         {
             planted = true;
         }
+        Debug.Log("Planted!");
+    }
+
+    public bool isPlanted()
+    {
+        return planted;
     }
 }

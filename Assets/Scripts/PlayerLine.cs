@@ -14,10 +14,14 @@ public class PlayerLine : MonoBehaviour
     private void Update()
     {
         Collider2D planet = Physics2D.OverlapCircle(transform.position, range, LayerMask.GetMask("Objects"));
-        if(planet)
+        /*if(planet)
         {
             Debug.Log("in range");
         }
+        if (line)
+        {
+            Debug.Log("tethered");
+        }*/
         if (Input.GetKeyDown(KeyCode.Space) && planet)
         {
             timer = Time.time;
@@ -34,18 +38,32 @@ public class PlayerLine : MonoBehaviour
 
 
                 //perform your action
-                line.end = planet.gameObject;
-                lm.newLine(planet.gameObject, this.gameObject);
+                //if tethered
+                if(line)
+                {
+                    line.end = planet.gameObject;
+                    lm.newLine(planet.gameObject, this.gameObject);
+                    planet.GetComponent<Planet>().Plant();
+                }
+                else if(planet.GetComponent<Planet>().isPlanted())
+                {
+                    lm.newLine(planet.gameObject, this.gameObject);
+                }
+                
+                
+                
             }
         }
         else
         {
             timer = float.PositiveInfinity;
         }
+        if(Input.GetKeyDown(KeyCode.J))
+            BreakLine();
     }
 
     public void BreakLine()
     {
-        //line.
+        Destroy(line.gameObject);
     }
 }

@@ -17,11 +17,12 @@ public class LineManager : MonoBehaviour
         player.GetComponent<PlayerLine>().line = temp.GetComponent<RootMove>();
     }
 
-    public void newLine(GameObject newhome, GameObject newend)
+    public RootMove newLine(GameObject newhome, GameObject newend)
     {
-        GameObject temp = Instantiate(linePrefab);
-        temp.GetComponent<RootMove>().start = newhome;
-        temp.GetComponent<RootMove>().end = newend;
-        player.GetComponent<PlayerLine>().line = temp.GetComponent<RootMove>();
+        RootMove temp = Instantiate(linePrefab).GetComponent<RootMove>();
+        temp.start = newhome;
+        temp.end = newend;
+        player.GetComponent<PlayerLine>().line = temp;
+        return temp;
     }
 }

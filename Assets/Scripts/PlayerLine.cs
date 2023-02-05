@@ -6,6 +6,7 @@ public class PlayerLine : MonoBehaviour
 {
     public RootMove line;
     public GameObject rangeIndicator;
+    [SerializeField] AudioSource plantSound;
     float timer;
     public float range = 10;
     public float timeToPlant = 1;
@@ -27,10 +28,14 @@ public class PlayerLine : MonoBehaviour
         {
             timer = Time.time;
             rb.velocity = Vector2.zero;
+            //plantSound.Play();
             //line.end = planet.gameObject;
         }
         else if (Input.GetKey(KeyCode.Space))
         {
+            if (!plantSound.isPlaying && planet)
+                plantSound.Play();
+
             if (Time.time - timer > timeToPlant)
             {
                 Debug.Log(Time.time - timer);
@@ -38,10 +43,10 @@ public class PlayerLine : MonoBehaviour
                 //since X - +inf = -inf, which is always less than holdDur
                 timer = float.PositiveInfinity;
 
-
+                
                 //perform your action
                 //if tethered
-                if(line || planet.CompareTag("Home"))
+                if (line || planet.CompareTag("Home"))
                 {
                     line.end = planet.gameObject;
                     lm.newLine(planet.gameObject, this.gameObject);
@@ -56,6 +61,7 @@ public class PlayerLine : MonoBehaviour
         else
         {
             timer = float.PositiveInfinity;
+            plantSound.Stop();
         }
         if(Input.GetKeyDown(KeyCode.J))
             BreakLine();

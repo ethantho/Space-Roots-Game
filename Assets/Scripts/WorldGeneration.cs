@@ -43,7 +43,7 @@ public class WorldGeneration : MonoBehaviour
 
         SpawnPlanets();
         SpawnAsteroids();
-        SpawnEnemies(0.3f);
+        SpawnEnemies(0f);
 
         planets = GameObject.FindGameObjectsWithTag("Planet");
         sb.totalPlanets = planets.Length;

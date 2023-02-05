@@ -228,6 +228,17 @@ public class PlayerController : MonoBehaviour
         {
             UCount = 0;
         }
+
+        if (DCool > 0)
+        {
+
+            DCool -= 1 * Time.deltaTime;
+
+        }
+        else
+        {
+            DCount = 0;
+        }
         if (LCool > 0)
         {
 

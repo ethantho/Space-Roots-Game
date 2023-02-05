@@ -60,14 +60,14 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             bullet.creator = gameObject;
             bullet.rigidbody.velocity = rb.velocity;
             bullet.Project(transform.up * 5);
 
-        }
+        }*/
 
         if(this.GetComponent<PlayerLine>().line)
         {

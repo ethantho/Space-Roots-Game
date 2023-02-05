@@ -51,6 +51,7 @@ public class WorldGeneration : MonoBehaviour
         {
             Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(planet.transform.position);
         }
+
         sb.totalPlanets = planets.Length;
     }
 

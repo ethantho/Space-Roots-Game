@@ -10,6 +10,7 @@ public class PlayerLine : MonoBehaviour
     public float range = 10;
     public float timeToPlant = 1;
     public LineManager lm;
+    public Rigidbody2D rb;
 
     private void Update()
     {
@@ -25,6 +26,7 @@ public class PlayerLine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && planet)
         {
             timer = Time.time;
+            rb.velocity = Vector2.zero;
             //line.end = planet.gameObject;
         }
         else if (Input.GetKey(KeyCode.Space))
@@ -49,9 +51,6 @@ public class PlayerLine : MonoBehaviour
                 {
                     lm.newLine(planet.gameObject, this.gameObject);
                 }
-                
-                
-                
             }
         }
         else

@@ -43,10 +43,10 @@ public class WorldGeneration : MonoBehaviour
 
         SpawnPlanets();
         SpawnAsteroids();
-        SpawnEnemies();
+        SpawnEnemies(0.5f);
 
         planets = GameObject.FindGameObjectsWithTag("Planet");
-
+        sb.totalPlanets = planets.Length;
         foreach (GameObject planet in planets)
         {
             Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(planet.transform.position, planet.GetComponent<Planet>());
@@ -69,6 +69,7 @@ public class WorldGeneration : MonoBehaviour
             if (CollisionWithEnemy == false)
             {
                 GameObject temp = Instantiate(planetPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                //(Planet)temp.
                 float size = Random.Range(1.5f, 3.5f); //used to be 0.7f 2f
 
                 //size = 1f;
@@ -125,10 +126,10 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
-    void SpawnEnemies()
+    public void SpawnEnemies(float mult)
     {
         int enemyCount = 0;
-        while (enemyCount < enemiestoSpawn)
+        while (enemyCount < enemiestoSpawn * mult)
         {
             float enemyRadius = 50;
             float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;

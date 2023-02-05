@@ -7,6 +7,9 @@ public class ScoreBoard : MonoBehaviour
     public int totalPlanets;
     public int planetsClaimed = 0;
     public Timer t;
+    [SerializeField] WorldGeneration wg;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +34,9 @@ public class ScoreBoard : MonoBehaviour
     public void Score()
     {
         planetsClaimed++;
+        wg.SpawnEnemies((float)planetsClaimed / totalPlanets);
+
     }
+
+
 }

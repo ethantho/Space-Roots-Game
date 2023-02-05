@@ -13,6 +13,7 @@ public class WorldGeneration : MonoBehaviour
     public GameObject enemyTarget;
 
     public GameObject[] planets;
+    [SerializeField] private Window_QuestPointer wqp;
     public ScoreBoard sb;
 
     // Start is called before the first frame update
@@ -45,6 +46,11 @@ public class WorldGeneration : MonoBehaviour
         SpawnEnemies();
 
         planets = GameObject.FindGameObjectsWithTag("Planet");
+
+        foreach (GameObject planet in planets)
+        {
+            Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(planet.transform.position);
+        }
         sb.totalPlanets = planets.Length;
     }
 
@@ -62,7 +68,8 @@ public class WorldGeneration : MonoBehaviour
             if (CollisionWithEnemy == false)
             {
                 GameObject temp = Instantiate(planetPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                float size = Random.Range(0.7f, 2f);
+                float size = Random.Range(1.5f, 3.5f); //used to be 0.7f 2f
+
                 //size = 1f;
                 temp.GetComponent<Rigidbody2D>().mass = 100 * size;
                 temp.transform.localScale = new Vector3(size, size, 0);

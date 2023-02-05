@@ -3,10 +3,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
+    [SerializeField] TextMeshProUGUI distanceWarning;
     public Bullet bulletPrefab;
     public Booster rightBoost;
     public Booster leftBoost;
@@ -70,6 +72,15 @@ public class PlayerController : MonoBehaviour
         if(this.GetComponent<PlayerLine>().line)
         {
             FuelBar.depleteFuel(-0.03f);
+        }
+
+        if (Vector3.Distance(transform.position, new Vector3(0f, 0f, 0f)) > 120)
+        {
+            distanceWarning.enabled = true;
+        }
+        else
+        {
+            distanceWarning.enabled = false;
         }
     }
 

@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         if (!stop)
         {
             currentTime += Time.deltaTime;
-            text.text = "TIMER: " + currentTime.ToString("0.0000");
+            text.text = currentTime.ToString("0.0000");
         }
         
     }

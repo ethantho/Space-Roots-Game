@@ -27,12 +27,15 @@ public class PlayerLine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && planet)
         {
             timer = Time.time;
-            rb.velocity = Vector2.zero;
+            
             //plantSound.Play();
             //line.end = planet.gameObject;
         }
         else if (Input.GetKey(KeyCode.Space))
         {
+            // Increase drag when planting
+            //rb.drag = 2f;
+
             if (!plantSound.isPlaying && planet)
                 plantSound.Play();
 
@@ -62,6 +65,7 @@ public class PlayerLine : MonoBehaviour
         {
             timer = float.PositiveInfinity;
             plantSound.Stop();
+            
         }
         if(Input.GetKeyDown(KeyCode.J))
             BreakLine();

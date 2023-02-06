@@ -10,6 +10,7 @@ public class FuelBar : MonoBehaviour
 	public static int planetsRemaining = 9;
 	public RectTransform rectTransform;
 	public TextMeshProUGUI planetsRemainingTxt;
+	bool dead = false;
 
 	public float deathTimer = 3f;
 	public static float getFuel()
@@ -57,8 +58,13 @@ public class FuelBar : MonoBehaviour
 
 		if(deathTimer <= 0f)
         {
+			if(!dead)
+			{
+				dead = true;
 			Debug.Log("You died");
-			SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+			SceneManager.LoadSceneAsync("GameOver");
+				
+			}
 		}
     }
 }

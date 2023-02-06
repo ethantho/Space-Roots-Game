@@ -114,7 +114,7 @@ public class WorldGeneration : MonoBehaviour
                         float size = Random.Range(0.3f, 1.5f);
                         temp.GetComponent<Rigidbody2D>().mass = 5 * size;
                         temp.transform.localScale = new Vector3(size, size, 0);
-
+                        temp.SetActive(true);
                     }
                 }
                 count++;

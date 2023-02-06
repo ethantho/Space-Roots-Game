@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreBoard : MonoBehaviour
 {
     public int totalPlanets;
     public int planetsClaimed = 0;
     public Timer t;
+    public SceneManager sm;
+    private bool win = false;
     [SerializeField] WorldGeneration wg;
 
     [SerializeField] AudioSource synths;
@@ -72,6 +75,11 @@ public class ScoreBoard : MonoBehaviour
     {
         Debug.Log("Omedetou");
         t.stop = true;
+        if (!win)
+        {
+            win = true;
+            SceneManager.LoadSceneAsync("WinScreen");
+        }
     }
 
     public void Score()

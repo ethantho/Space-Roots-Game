@@ -1505,7 +1505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.00000057220467, y: 0.0000011444092, z: -6.548363e-13, w: 1}
-  m_LocalPosition: {x: -0.000024795532, y: 1.0000124, z: -10}
+  m_LocalPosition: {x: -0.000023841858, y: 1.0000124, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bg: {fileID: 21300000, guid: aeec07eea026e544d8250c6e692b8cb5, type: 3}
   planetstoSpawn: 5
-  asteroidstoSpawn: 5
+  asteroidstoSpawn: 50
   enemiestoSpawn: 10
   sr: {fileID: 778770495}
   planetPrefab: {fileID: 2646491021896823984, guid: 88568501dd38d9849bf39ff19dcc3a9c, type: 3}
@@ -2783,7 +2783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681725187}
   m_LocalRotation: {x: 0.00000057220467, y: 0.0000011444092, z: -6.548363e-13, w: 1}
-  m_LocalPosition: {x: -0.000024795532, y: 1.0000124, z: -10}
+  m_LocalPosition: {x: -0.000023841858, y: 1.0000124, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

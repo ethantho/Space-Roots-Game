@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 100f;
     public float speed = 20;
     public float speedLimit = 1;
-    public float burstMultiplier;
+    public float boostFuelConsumption; //originally effectively 3
+    [SerializeField] float currentSpeed;
+    //public float burstMultiplier;
+    public float boostPower; //752 effectively in original build
     PlayerLine pl;
 
 
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentSpeed = rb.velocity.magnitude;
         if (FuelBar.getFuel() > 0)
         {
             doBasicMovement();
@@ -149,9 +153,9 @@ public class PlayerController : MonoBehaviour
             if (UCool > 0 && UCount == 1/*Number of Taps you want Minus One*/)
             {
                 Debug.Log("Double Tapped U");
-                rb.AddForce(transform.up * speed * burstMultiplier);
+                rb.AddForce(transform.up * boostPower);
                 backBoost.Boost();
-                FuelBar.depleteFuel(3f);
+                FuelBar.depleteFuel(boostFuelConsumption);
                 boostSound.Play();
             }
             else
@@ -166,9 +170,9 @@ public class PlayerController : MonoBehaviour
             if (DCool > 0 && DCount == 1/*Number of Taps you want Minus One*/)
             {
                 Debug.Log("Double Tapped D");
-                rb.AddForce(transform.up * speed * burstMultiplier * -1);
+                rb.AddForce(transform.up * boostPower * -1);
                 frontBoost.Boost();
-                FuelBar.depleteFuel(3f);
+                FuelBar.depleteFuel(boostFuelConsumption);
                 boostSound.Play();
             }
             else
@@ -185,9 +189,9 @@ public class PlayerController : MonoBehaviour
             if (LCool > 0 && LCount == 1/*Number of Taps you want Minus One*/)
             {
                 Debug.Log("Double Tapped L");
-                rb.AddForce(transform.right * speed * burstMultiplier * -1);
+                rb.AddForce(transform.right * boostPower * -1);
                 rightBoost.Boost();
-                FuelBar.depleteFuel(3f);
+                FuelBar.depleteFuel(boostFuelConsumption);
                 boostSound.Play();
             }
             else
@@ -205,9 +209,9 @@ public class PlayerController : MonoBehaviour
             if (RCool > 0 && RCount == 1/*Number of Taps you want Minus One*/)
             {
                 Debug.Log("Double Tapped R");
-                rb.AddForce(transform.right * speed * burstMultiplier);
+                rb.AddForce(transform.right * boostPower);
                 leftBoost.Boost();
-                FuelBar.depleteFuel(3f);
+                FuelBar.depleteFuel(boostFuelConsumption);
                 boostSound.Play();
             }
             else

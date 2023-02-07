@@ -32,10 +32,10 @@ public class WorldGeneration : MonoBehaviour
         borders[2].size = new Vector2(width, 10);
         borders[3].size = new Vector2(width, 10);
 
-        borders[0].offset = new Vector2(width/2 - 20, 0);
-        borders[1].offset = new Vector2(-width/2 + 20, 0);
-        borders[2].offset = new Vector2(0, height/2 - 20);
-        borders[3].offset = new Vector2(0, -height/2 + 20);
+        borders[0].offset = new Vector2(width / 2 - 5, 0);
+        borders[1].offset = new Vector2(-width / 2 + 5, 0);
+        borders[2].offset = new Vector2(0, height / 2 - 5);
+        borders[3].offset = new Vector2(0, -height / 2 + 5);
 
         //width /= 2;
         //height /= 2;
@@ -60,9 +60,9 @@ public class WorldGeneration : MonoBehaviour
         int planetCount = 0;
         while (planetCount < planetstoSpawn)
         {
-            float enemyRadius = 40;
-            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+            float enemyRadius = 50;
+            float x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+            float y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
             Vector2 spawnPoint = new Vector2(x, y);
             Collider2D CollisionWithEnemy = Physics2D.OverlapCircle(spawnPoint, enemyRadius, LayerMask.GetMask("Objects"));
             int count = 0;
@@ -77,8 +77,8 @@ public class WorldGeneration : MonoBehaviour
                 Window_QuestPointer.QuestPointer qp = wqp.CreatePointer(temp.transform.position, temp.GetComponent<Planet>());
                 temp.GetComponent<Rigidbody2D>().mass = 100 * size;
                 temp.transform.localScale = new Vector3(size, size, 0);
-                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
-                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 2;
+                x = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
+                y = Random.Range(bg.vertices[3].x + 20, bg.vertices[2].x - 20) / 3;
                 spawnPoint = new Vector2(x, y);
                 count++;
                 planetCount++;

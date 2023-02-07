@@ -23,6 +23,7 @@ public class Timer : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             text.text = currentTime.ToString("0.0000");
+            PlayerPrefs.SetFloat("score", currentTime);
         }
         
     }

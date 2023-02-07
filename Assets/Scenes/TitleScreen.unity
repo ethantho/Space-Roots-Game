@@ -375,7 +375,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -184}
-  m_SizeDelta: {x: 175, y: 93.75}
+  m_SizeDelta: {x: 512.5, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289701052
 MonoBehaviour:
@@ -406,10 +406,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1625879743, guid: d9b835301176b444898c9a532e9a4001, type: 3}
-    m_PressedSprite: {fileID: 1625879743, guid: d9b835301176b444898c9a532e9a4001, type: 3}
-    m_SelectedSprite: {fileID: 1625879743, guid: d9b835301176b444898c9a532e9a4001, type: 3}
-    m_DisabledSprite: {fileID: 1625879743, guid: d9b835301176b444898c9a532e9a4001, type: 3}
+    m_HighlightedSprite: {fileID: 902142536, guid: 7aa4b2a17f562724bbbd69aa862c5f8f, type: 3}
+    m_PressedSprite: {fileID: 902142536, guid: 7aa4b2a17f562724bbbd69aa862c5f8f, type: 3}
+    m_SelectedSprite: {fileID: -112973723, guid: 7aa4b2a17f562724bbbd69aa862c5f8f, type: 3}
+    m_DisabledSprite: {fileID: 902142536, guid: 7aa4b2a17f562724bbbd69aa862c5f8f, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -423,7 +423,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1900725531}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: quit_btn
+        m_MethodName: leaderboard_btn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1656574709, guid: d9b835301176b444898c9a532e9a4001, type: 3}
+  m_Sprite: {fileID: -112973723, guid: 7aa4b2a17f562724bbbd69aa862c5f8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -1926060557, guid: d9b835301176b444898c9a532e9a4001, type: 3}
     m_PressedSprite: {fileID: -1926060557, guid: d9b835301176b444898c9a532e9a4001, type: 3}
-    m_SelectedSprite: {fileID: -1926060557, guid: d9b835301176b444898c9a532e9a4001, type: 3}
+    m_SelectedSprite: {fileID: -915148190, guid: d9b835301176b444898c9a532e9a4001, type: 3}
     m_DisabledSprite: {fileID: -1926060557, guid: d9b835301176b444898c9a532e9a4001, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 1900725528}
   - component: {fileID: 1900725527}
   - component: {fileID: 1900725531}
+  - component: {fileID: 1900725532}
   m_Layer: 5
   m_Name: Title Screen
   m_TagString: Untagged
@@ -865,3 +866,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e305f35cdb5bacc42b5e845f3c7006c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1900725532
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900725526}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 36924773a044d7840af6f1795ed605fb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

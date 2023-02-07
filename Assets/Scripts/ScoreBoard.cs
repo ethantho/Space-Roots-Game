@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ScoreBoard : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class ScoreBoard : MonoBehaviour
     [SerializeField] AudioSource congasShaker;
     [SerializeField] AudioSource bass;
     public AudioSource drumset;
+    [SerializeField] TextMeshProUGUI planetText;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //totalPlanets = wg.planetstoSpawn;
         planetsClaimed = 0;
         synths.Play();
         flute.Play();
@@ -41,7 +44,8 @@ public class ScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(planetsClaimed == totalPlanets)
+        //Debug.Log(planetsClaimed + "/" + totalPlanets);
+        if(planetsClaimed >= totalPlanets)
         {
             Win();
         }
@@ -66,7 +70,7 @@ public class ScoreBoard : MonoBehaviour
             congasShaker.mute = false;
         }
 
-
+        planetText.text = planetsClaimed + "/" + totalPlanets;
 
 
     }

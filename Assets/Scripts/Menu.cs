@@ -29,6 +29,6 @@ public class Menu : MonoBehaviour
 
 	public void howtoplay_btn()
 	{
-		SceneManager.LoadSceneAsync("HowToPlay");
+		SceneManager.LoadScene(5);
 	}
 }

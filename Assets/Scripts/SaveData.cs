@@ -17,6 +17,7 @@ public class SaveData : MonoBehaviour
     public void SendScore()
     {
         Debug.Log(myName.text + ": " + PlayerPrefs.GetFloat("score"));
+        PlayerPrefs.SetString("name", myName.text.ToUpper());
         HighScores.UploadScore(myName.text.ToUpper(), (int)(10000000 - PlayerPrefs.GetFloat("score") * 10000));
         
     }

@@ -424,7 +424,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -500,6 +500,8 @@ MonoBehaviour:
   - {fileID: 1926473082}
   - {fileID: 1280955981}
   - {fileID: 1259556858}
+  normal: {fileID: 11400000, guid: 95ebd2d32b1bc2b42ac1e71c47eee682, type: 2}
+  bold: {fileID: 11400000, guid: ee8017d22b4380f4fb721b3dacc241d8, type: 2}
 --- !u!114 &203415841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3931,7 +3933,7 @@ GameObject:
   - component: {fileID: 1829279706}
   - component: {fileID: 1829279705}
   m_Layer: 5
-  m_Name: Play Button
+  m_Name: Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

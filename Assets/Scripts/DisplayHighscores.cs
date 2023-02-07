@@ -7,6 +7,9 @@ public class DisplayHighscores : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI[] rNames;
     public TMPro.TextMeshProUGUI[] rScores;
+    public TMPro.TMP_FontAsset normal;
+    public TMPro.TMP_FontAsset bold;
+
     HighScores myScores;
 
     void Start() //Fetches the Data at the beginning
@@ -27,6 +30,16 @@ public class DisplayHighscores : MonoBehaviour
             {
                 rScores[i].text = ConvertScoreToString(highscoreList[i].score);
                 rNames[i].text = highscoreList[i].username;
+                if (rNames[i].text.Equals(PlayerPrefs.GetString("name")))
+                {
+                    rScores[i].font = bold;
+                    rNames[i].font = bold;
+                }
+                else
+                {
+                    rScores[i].font = normal;
+                    rNames[i].font = normal;
+                }
             }
         }
     }

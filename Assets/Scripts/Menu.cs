@@ -26,4 +26,9 @@ public class Menu : MonoBehaviour
 	{
 		SceneManager.LoadSceneAsync("Leaderboard");
 	}
+
+	public void howtoplay_btn()
+	{
+		SceneManager.LoadSceneAsync("HowToPlay");
+	}
 }

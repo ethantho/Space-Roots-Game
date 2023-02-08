@@ -105,7 +105,7 @@ public class Window_QuestPointer : MonoBehaviour
             {
                 this.pointerGameObject.GetComponent<Image>().color = Color.green;
             }
-            if(Vector3.Distance(player.transform.position, targetPosition) > 40f)
+            if(Vector3.Distance(player.transform.position, targetPosition) > 45f)
             {
                 this.pointerGameObject.SetActive(false);
             }

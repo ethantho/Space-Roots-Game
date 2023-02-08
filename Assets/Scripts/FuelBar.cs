@@ -31,8 +31,9 @@ public class FuelBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+
+		fuel = 100.0f;
+}
 
     // Update is called once per frame
     void Update()

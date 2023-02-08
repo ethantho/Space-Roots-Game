@@ -144,6 +144,15 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("World");
         }
+
+        /*if (Input.GetKeyDown(KeyCode.C)) currently dealt with in RootMove
+        {
+            lockTether();
+        }
+        else
+        {
+            unlockTether();
+        }*/
     }
 
     void doBurstMovement()
@@ -288,4 +297,14 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    /*void lockTether()
+    {
+        .locked = true;
+    }
+
+    void unlockTether()
+    {
+        pl.locked = false;
+    }*/
 }

@@ -2058,7 +2058,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: speed
-      value: 1.88
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
+      propertyPath: boostPower
+      value: 752
       objectReference: {fileID: 0}
     - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: boostSound
@@ -2219,6 +2223,7 @@ MonoBehaviour:
   timeToPlant: 1
   lm: {fileID: 538539752}
   rb: {fileID: 1312120564}
+  joint: 0
 --- !u!82 &1312120575
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2507,6 +2512,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!232 &1312120580
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207494457}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 1
+  m_MaxDistanceOnly: 0
 --- !u!1 &1590111732
 GameObject:
   m_ObjectHideFlags: 0

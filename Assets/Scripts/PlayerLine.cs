@@ -12,10 +12,29 @@ public class PlayerLine : MonoBehaviour
     public float timeToPlant = 1;
     public LineManager lm;
     public Rigidbody2D rb;
+    public bool joint;
+   // [SerializeField] DistanceJoint2D joint;
+
+    private void Start()
+    {
+       // joint = GameObject.FindGameObjectWithTag("player").GetComponent<DistanceJoint2D>();
+    }
 
     private void Update()
     {
         Collider2D planet = Physics2D.OverlapCircle(transform.position, range, LayerMask.GetMask("Objects"));
+        /*if (locked)
+        {
+            joint.enabled = true;
+            float lockDistance = Vector2.Distance(planet.gameObject.transform.position, GameObject.FindGameObjectWithTag("player").transform.position);
+            joint.connectedBody = planet.gameObject.GetComponent<Rigidbody2D>();
+            joint.distance = lockDistance;
+        }
+        else
+        {
+            joint.enabled = false;
+        }*/
+        
         /*if(planet)
         {
             Debug.Log("in range");
@@ -53,6 +72,7 @@ public class PlayerLine : MonoBehaviour
                 {
                     line.end = planet.gameObject;
                     lm.newLine(planet.gameObject, this.gameObject);
+
                     planet.GetComponent<Planet>().Plant();
                 }
                 else if(planet.GetComponent<Planet>().isPlanted())

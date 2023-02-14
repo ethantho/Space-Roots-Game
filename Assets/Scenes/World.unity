@@ -2069,9 +2069,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
+      propertyPath: otis
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f97356896d7dae41be05660322e9b64, type: 3}
+    - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: speed
       value: 1.88
       objectReference: {fileID: 0}
+    - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
+      propertyPath: chungus
+      value: 
+      objectReference: {fileID: 21300000, guid: 42cc0003332404445adc1288832eee31, type: 3}
     - target: {fileID: 8516141179284800272, guid: c804a798c424d6d41bd55d43fa098658, type: 3}
       propertyPath: boostSound
       value: 

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-	
+	public Toggle chungusToggle;
+
 	public void play_btn()
 	{
 		SceneManager.LoadSceneAsync("World");
@@ -30,5 +32,14 @@ public class Menu : MonoBehaviour
 	public void howtoplay_btn()
 	{
 		SceneManager.LoadScene(5);
+	}
+
+
+	public void SetChungus()
+    {
+		if (chungusToggle.isOn)
+			PlayerPrefs.SetInt("Chungus", 1);
+		else
+			PlayerPrefs.SetInt("Chungus", 0);
 	}
 }

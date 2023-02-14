@@ -18,10 +18,13 @@ public class PlayerController : MonoBehaviour
     public Booster backBoost;
     public Booster frontBoost;
     public SpriteRenderer Exhaust;
+    public SpriteRenderer sr;
     public float rotationSpeed = 100f;
     public float speed = 20;
     public float speedLimit = 1;
     public float burstMultiplier;
+    public Sprite otis;
+    public Sprite chungus;
     PlayerLine pl;
 
 
@@ -38,8 +41,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         pl = GetComponent<PlayerLine>();
+
+        sr.sprite = otis;
 
         LCount = 0;
         LCool = doubleTapThreshold;
@@ -270,10 +276,23 @@ public class PlayerController : MonoBehaviour
 
     void takeDamage()
     {
-        Debug.Log("Took damage");
+        if (PlayerPrefs.GetInt("Chungus") == 1)
+        {
+            StartCoroutine(HitEffect());
+        }
+        //Debug.Log("Took damage");
         FuelBar.depleteFuel(20f);
         pl.BreakLine();
         pl.plantSound.Stop();
+        
+    }
+
+    private IEnumerator HitEffect()
+    {
+        sr.sprite = chungus;
+        yield return new WaitForSeconds(0.5f);
+        sr.sprite = otis;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
